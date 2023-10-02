@@ -39,7 +39,7 @@ export default function Orders() {
                     {
                         orders.length>0 && orders.map(order=> {
                             return(
-                                <tr>
+                                <tr key={order._id}>
                                     <td>{(new Date(order.createdAt)).toLocaleString()}</td>
                                     <td className={order.paid ? "text-green-400" : "text-red-400"}>
                                         {order.paid ? "YES" : "NO"}

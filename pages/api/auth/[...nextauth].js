@@ -5,7 +5,6 @@ import NextAuth, { getServerSession } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 
 async function isAdminEmail(email) {
-  return 1
    return !!(await Admin.findOne({email}))
 }
 export const authOptions = {

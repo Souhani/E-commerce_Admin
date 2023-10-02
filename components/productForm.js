@@ -111,7 +111,7 @@ export default function ProductForm({
                     <option value=''>Uncategorized</option>
                     {categories.length > 0 && categories.map(category => {
                         return(
-                            <option value = {category._id}>
+                            <option key={category._id} value = {category._id}>
                               {category.name}
                             </option>
                         )
@@ -125,12 +125,12 @@ export default function ProductForm({
                     }
                     {SelectedCategoryProperties.length>0 && SelectedCategoryProperties.map(p => {
                     return(
-                        <div className="">
+                        <div key={p.name} className="">
                             <label>{p.name[0].toUpperCase()+p.name.substring(1) }</label>
                             <div>
                                 <select  value = {productProperties[p.name]} onChange={(e) => changeProductProperties(p.name, e.target.value)}>
                                 {p.values.map(v => (
-                                    <option value-={v}>{v}</option>
+                                    <option key={v.name} value={v}>{v}</option>
                                 ))}
                                 </select>
                             </div>

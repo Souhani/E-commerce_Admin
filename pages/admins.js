@@ -100,7 +100,7 @@ function AdminsPage({swal}) {
                 </tr>}
                 {admins.length>0 && admins.map(admin => {
                     return(
-                        <tr>
+                        <tr key={admin.email}>
                            <td>{admin.email}</td>
                            <td>{admin.createdAt && DateFormat(admin.createdAt)}</td>
                            <td><button className="btn-red" onClick={() => deleteAdmin(admin)}>Delete</button></td>

@@ -132,7 +132,7 @@ import { withSwal } from 'react-sweetalert2';
                         <option value={''}>No parent category</option>
                         {categories.length > 0 && categories.map(category => {
                             return(
-                                <option value={category._id}>{category.name}</option>
+                                <option key={category._id} value={category._id}>{category.name}</option>
                             )
                         })}
                     </select>
@@ -145,7 +145,7 @@ import { withSwal } from 'react-sweetalert2';
                         Add new property</button>
                     {properties.length > 0 && properties.map((property, index) => {
                         return(
-                            <div className='flex gap-1 mb-2'>
+                            <div key={index} className='flex gap-1 mb-2'>
                                 <input onChange={(ev) => {handlePropertyNameChange(index, property, ev.target.value)}} 
                                        type="text" 
                                        value={property.name}
@@ -193,7 +193,7 @@ import { withSwal } from 'react-sweetalert2';
                 }
                 {categories.length > 0 && categories.map(category => {
                     return(
-                        <tr>
+                        <tr key={category._id}>
                             <td>{category.name}</td>
                             <td>{category?.parent?.name}</td>
                             <td>
