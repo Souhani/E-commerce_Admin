@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import Spinner from "./Spinner";
 import { subHours } from "date-fns";
 
-export default function() {
+export default function HomeStats() {
   const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   async function fetchOrders() {
