@@ -2,11 +2,9 @@ import multiparty from 'multiparty';
 import {v2 as cloudinary} from 'cloudinary';
 import { mongooseConnect } from '@/lib/mongoose';
 import { isAdminRequest } from './auth/[...nextauth]';
-          
-
 
 export default async function handle(req, res) {
-
+  
   await mongooseConnect();
   await isAdminRequest(req,res)
     cloudinary.config({ 
@@ -42,6 +40,7 @@ export default async function handle(req, res) {
 
 };
 
+///
 
 
 export const config = {

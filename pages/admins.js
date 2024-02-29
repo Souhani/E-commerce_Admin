@@ -71,7 +71,7 @@ function AdminsPage({swal}) {
           <h1>Admins</h1>
           <h2>Add new admin</h2>
           <form onSubmit={(ev) => addAdmin(ev)}>
-            <div className="flex gap-2 ">
+            <div className="sm:flex grid gap-2 ">
                 <input type="email" 
                        className="mb-0" 
                        placeholder="google email"
@@ -86,13 +86,13 @@ function AdminsPage({swal}) {
           <table className="basic">
             <thead>
                 <tr>
-                    <th className="text-left">Admin Google Email</th>
+                    <th className="text-left sm:!text-[17px] !text-[10px]">Admin Google Email</th>
                 </tr>
             </thead>
             <tbody>
                 {!isLoaded && 
                 <tr>
-                    <td colSpan={2}>
+                    <td colSpan={2} className="sm:text-[17px] text-[10px]">
                         <div className="py-4">
                            <Spinner fullWidth={true} />
                         </div>
@@ -100,10 +100,10 @@ function AdminsPage({swal}) {
                 </tr>}
                 {admins.length>0 && admins.map(admin => {
                     return(
-                        <tr key={admin.email}>
-                           <td>{admin.email}</td>
-                           <td>{admin.createdAt && DateFormat(admin.createdAt)}</td>
-                           <td><button className="btn-red" onClick={() => deleteAdmin(admin)}>Delete</button></td>
+                        <tr key={admin.email} className="sm:text-[17px] text-[10px]">
+                           <td className="sm:text-[17px] text-[10px]">{admin.email}</td>
+                           <td className="sm:text-[17px] text-[10px]">{admin.createdAt && DateFormat(admin.createdAt)}</td>
+                           <td className="sm:text-[17px] text-[10px]"><button className="btn-red" onClick={() => deleteAdmin(admin)}>Delete</button></td>
                         </tr>    
                     )
                 })}

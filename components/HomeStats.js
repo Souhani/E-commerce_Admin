@@ -25,6 +25,7 @@ export default function HomeStats() {
         </div>
       )
     }
+    console.log(orders || "")
   const ordersToday = orders.filter(order => new Date(order.createdAt) > subHours(new Date, 24));
   const ordersWeek = orders.filter(order => new Date(order.createdAt) > subHours(new Date, 24 * 7));
   const ordersMonth = orders.filter(order => new Date(order.createdAt) > subHours(new Date, 24 * 30));
@@ -40,8 +41,8 @@ export default function HomeStats() {
     return(
         <div className='mt-5'>
           <div className='mb-5'>
-            <h1>Orders</h1>
-            <div className="tiles-grid ">
+            <h1 className="font-[600]">Orders</h1>
+            <div className="tiles-grid  ">
                 <div className="tile">
                   <h3 className='tile-title '>today</h3>
                   <div className="tile-value">{ordersToday.length}</div>
@@ -60,7 +61,7 @@ export default function HomeStats() {
             </div>
           </div>
           <div className='mb-5'>
-           <h1>Revenue</h1>
+           <h1 className="font-[600]">Revenue</h1>
            <div className="tiles-grid">
               <div className="tile">
                 <h3 className='tile-title '>today</h3>

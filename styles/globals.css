@@ -24,7 +24,7 @@ h2 {
 }
 
 Label{
-    @apply text-gray-600 text-sm;
+    @apply text-gray-900 text-sm;
 }
 
 .btn-primary{

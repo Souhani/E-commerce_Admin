@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 export  default function HomeHeader() {
     const {data: session} = useSession();
    return(
-    <div className="flex justify-between text-blue-900">
+    <div className="flex justify-between text-blue-950">
      <h2 className="mt-0">
       <div className="flex gap-2 items-center">
         <div className="sm:hidden">
@@ -15,7 +15,7 @@ export  default function HomeHeader() {
       </div>
       </h2>
           <div className="hidden sm:block">
-            <div className="flex text-black gap-1 bg-gray-300 rounded-lg overflow-hidden">
+            <div className="flex text-black gap-1 bg-gray-100 items-center mt-1 rounded-md overflow-hidden">
               <img src={session?.user?.image} alt="" className="w-6 h-6"/>
               <span className="px-2">{session?.user?.name}</span>
             </div>

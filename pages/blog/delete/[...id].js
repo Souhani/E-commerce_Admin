@@ -6,15 +6,15 @@ import { useEffect, useState } from "react";
 
 export default function DeleteProductPage (){
     const router = useRouter();
-    const [productInfo, setProductInfo] = useState();
+    const [blogInfo, setBlogInfo] = useState();
     const {id} = router.query;
 
     useEffect( () => {
         if(!id){
             return;
         }
-        axios.get('/api/products?id='+id).then(response => {
-            setProductInfo(response.data)
+        axios.get('/api/blog?id='+id).then(response => {
+            setBlogInfo(response.data)
 
         })
         
@@ -22,31 +22,34 @@ export default function DeleteProductPage (){
 
 
     function goBack(){
-        router.push('/products')
+        router.push('/blog')
     }
 
-    async function deleteProduct() {
-        await axios.delete('/api/products?id='+id);
+    async function deleteBlog() {
+        await axios.delete('/api/blog?id='+id);
         goBack()
     }
     return(
         <Layout>
-            {productInfo ? 
-            <div>
-                <h1 className="text-center">Do you really want to delete
-                 &nbsp; &quot;{productInfo?.title}&quot;?
+            {
+                blogInfo ?
+                
+                <div>
+                    <h1 className="text-center">Do you really want to delete
+                 &nbsp; &quot;{blogInfo?.title}&quot;?
             </h1>
             <div className="flex gap-2 justify-center ">
-                <button onClick = {deleteProduct}
+                <button onClick = {deleteBlog}
                         className="btn-red">Yes</button>
                 <button className="btn-default"
                         onClick = {goBack}>No</button>
             </div>
+                </div>:
+                <div className="w-full flex justify-center mt-5">
+                <Spinner /> 
+            </div>
+            }
             
-            </div> :
-             <div className="w-full flex justify-center mt-5">
-             <Spinner /> 
-         </div>}
         </Layout>
     )
 }
