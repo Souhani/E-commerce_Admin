@@ -12,10 +12,10 @@ export default function Layout({ children }) {
   if(!session?.user?.email){
     return (
       <>
-        <div className="bg-blue-400 w-screen h-screen flex items-center">
+        <div className="bg-gray-300 w-screen h-screen flex items-center">
           <div className="text-center w-full flex justify-center">
             <button 
-                    className="bg-white text-blue-900 shadow-md p-2 px-4 rounded-md flex gap-2 items-center"
+                    className="bg-white text-primary shadow-md p-2 px-4 rounded-md flex gap-2 items-center"
                     onClick={()=> { signIn("google")}}>
                       <FaGoogle className=''/>
                       <strong>Log in with google</strong></button>
