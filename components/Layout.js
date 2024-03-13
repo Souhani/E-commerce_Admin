@@ -58,7 +58,6 @@ export default function Layout({ children }) {
         <div className="flex">
           <Nav show = {showNav}/>
           <div className=' flex-grow  p-4'>
-            <div className="mb-5 shadow-sm bg-white rounded-sm px-5 py-3  "><HomeHeader /></div>
             { children }
           </div>
         </div>
