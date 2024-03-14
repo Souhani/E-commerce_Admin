@@ -8,7 +8,11 @@ import { signOut } from 'next-auth/react'
 
 async function isAdminEmail(email) {
   await mongooseConnect();
-   return !!(await Admin.findOne({email}))
+  const isAdmin = !!(await Admin.findOne({email}));
+  if(!isAdmin) {
+    await signOut("google");
+  }
+   return isAdmin
 }
 export const authOptions = {
   adapter: MongoDBAdapter(clientPromise),
@@ -23,8 +27,7 @@ export const authOptions = {
       if(await isAdminEmail(session?.user?.email)){
         return session;
       }else{
-         await signOut("google");
-         return false
+        return false;
       }
     }
   },

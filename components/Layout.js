@@ -1,12 +1,13 @@
 import Nav from '@/components/Nav';
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn } from "next-auth/react"
 import { useState } from 'react';
 import Logo from './Logo';
 import { FaGoogle } from "react-icons/fa";
+import HomeHeader from './HomeHeader';
 import Spinner from './Spinner';
 
 
-export default async function Layout({ children }) {
+export default function Layout({ children }) {
   const { status } = useSession();
   const [showNav, setShowNav] = useState(false)
   if(status === "unauthenticated"){
