@@ -32,7 +32,7 @@ export default function Layout({ children }) {
       </div>
     )
   }
- if(document !== undefined) {
+ if(document) {
   var cookies = document.cookie.split(";");
   for (var i = 0; i < cookies.length; i++) {
       var cookie = cookies[i];
