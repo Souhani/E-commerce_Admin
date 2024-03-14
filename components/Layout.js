@@ -1,29 +1,16 @@
 import Nav from '@/components/Nav';
-import { useSession, signIn } from "next-auth/react"
+import { useSession, signIn, signOut } from "next-auth/react"
 import { useState } from 'react';
 import Logo from './Logo';
 import { FaGoogle } from "react-icons/fa";
 import Spinner from './Spinner';
 
 
-export default function Layout({ children }) {
+export default async function Layout({ children }) {
   const { status } = useSession();
   const [showNav, setShowNav] = useState(false)
   if(status === "unauthenticated"){
-    function clearAllCookies() {
-      var cookies = document.cookie.split(";");
-  
-      for (var i = 0; i < cookies.length; i++) {
-          var cookie = cookies[i];
-          var eqPos = cookie.indexOf("=");
-          var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-          document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      }
-  };
-  if(document !== undefined) {
-    clearAllCookies();
-  }
-  
+    await signOut("google");
     return (
       <>
         <div className="bg-gray-300 w-screen h-screen flex items-center">
