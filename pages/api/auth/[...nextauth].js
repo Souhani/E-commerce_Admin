@@ -10,7 +10,7 @@ async function isAdminEmail(email) {
   await mongooseConnect();
   const isAdmin = !!(await Admin.findOne({email}));
   if(!isAdmin) {
-    await signOut("google");
+    await signOut();
   }
    return isAdmin
 }
