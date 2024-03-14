@@ -23,7 +23,8 @@ export const authOptions = {
       if(await isAdminEmail(session?.user?.email)){
         return session;
       }else{
-        return await signOut("google");
+         await signOut("google");
+         return false
       }
     }
   },
