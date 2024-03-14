@@ -10,7 +10,6 @@ export default async function Layout({ children }) {
   const { status } = useSession();
   const [showNav, setShowNav] = useState(false)
   if(status === "unauthenticated"){
-    await signOut("google");
     return (
       <>
         <div className="bg-gray-300 w-screen h-screen flex items-center">
