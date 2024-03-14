@@ -11,24 +11,26 @@ export default function Layout({ children }) {
   const [showNav, setShowNav] = useState(false);
   console.log(status)
   if(status === "unauthenticated"){
-    signOut("google")
-    return (
-      <>
-        <div className="bg-gray-300 w-screen h-screen flex items-center">
-          <div className="text-center w-full flex justify-center">
-            <button 
-                    className="bg-white text-primary shadow-md p-2 px-4 rounded-md flex gap-2 items-center"
-                    onClick={async ()=> { await signOut(); await signIn("google")}}>
-                      <FaGoogle className=''/>
-                      <strong>Log in with google</strong></button>
+    const loging = async () => {
+      await signOut("google");
+      return(
+        <>
+          <div className="bg-gray-300 w-screen h-screen flex items-center">
+            <div className="text-center w-full flex justify-center">
+              <button 
+                      className="bg-white text-primary shadow-md p-2 px-4 rounded-md flex gap-2 items-center"
+                      onClick={async ()=> { await signIn("google")}}>
+                        <FaGoogle className=''/>
+                        <strong>Log in with google</strong></button>
+            </div>
           </div>
-        </div>
-      </>
-    ) 
+        </>
+      ) 
+    }
+    return loging();
   };
 
   if(status === "loading"){
-    console
     return (
       <>
         <div className="bg-gray-300 w-screen h-screen flex items-center">
