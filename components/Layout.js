@@ -8,7 +8,9 @@ import Spinner from './Spinner';
 
 export default function Layout({ children }) {
   const { status } = useSession();
-  const [showNav, setShowNav] = useState(false)
+  const [showNav, setShowNav] = useState(false);
+  console.log(status)
+  signOut("google")
   if(status === "unauthenticated"){
     return (
       <>
@@ -16,7 +18,7 @@ export default function Layout({ children }) {
           <div className="text-center w-full flex justify-center">
             <button 
                     className="bg-white text-primary shadow-md p-2 px-4 rounded-md flex gap-2 items-center"
-                    onClick={async ()=> { await signOut("google"); await signIn("google")}}>
+                    onClick={async ()=> { await signOut(); await signIn("google")}}>
                       <FaGoogle className=''/>
                       <strong>Log in with google</strong></button>
           </div>
