@@ -4,14 +4,10 @@ import { Admin } from '@/models/Admin'
 import { MongoDBAdapter } from '@next-auth/mongodb-adapter'
 import NextAuth, { getServerSession } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
-import { signOut } from 'next-auth/react'
 
 async function isAdminEmail(email) {
   await mongooseConnect();
   const isAdmin = !!(await Admin.findOne({email}));
-  if(!isAdmin) {
-    await signOut();
-  }
    return isAdmin
 }
 export const authOptions = {
@@ -27,7 +23,9 @@ export const authOptions = {
       if(await isAdminEmail(session?.user?.email)){
         return session;
       }else{
-        return false;
+        session.notAdmin = true;
+        session.user = "";
+        return session;
       }
     }
   },

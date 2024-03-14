@@ -1,17 +1,21 @@
 import Nav from '@/components/Nav';
 import { useSession, signIn, signOut } from "next-auth/react"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Logo from './Logo';
 import { FaGoogle } from "react-icons/fa";
 import Spinner from './Spinner';
 
 
 export default function Layout({ children }) {
-  const { status } = useSession();
+  const { status, data:session } = useSession();
   const [showNav, setShowNav] = useState(false);
-  if(!status) {
-    signOut();
+ useEffect(() => {
+  if(session) {
+    if(session.notAdmin) {
+      signOut()
+   }
   }
+ },[session]) ;
   if(status === "unauthenticated"){
     return (
       <>
@@ -44,7 +48,7 @@ export default function Layout({ children }) {
     ) 
   }
 
-  if(status === 'authenticated') {
+  if(status === 'authenticated' && !session?.notAdmin) {
     return(
       <div className="bg-[whiteSmoke] min-h-screen">
         <div className = " md:hidden flex gap-10 items-center p-4">
