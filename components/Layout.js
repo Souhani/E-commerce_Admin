@@ -9,28 +9,27 @@ import Spinner from './Spinner';
 export default function Layout({ children }) {
   const { status } = useSession();
   const [showNav, setShowNav] = useState(false);
-  console.log(status)
+  if(!status) {
+    signOut();
+  }
   if(status === "unauthenticated"){
-    const loging = async () => {
-      await signOut();
-      return(
-        <>
-          <div className="bg-gray-300 w-screen h-screen flex items-center">
-            <div className="text-center w-full flex justify-center">
-              <button 
-                      className="bg-white text-primary shadow-md p-2 px-4 rounded-md flex gap-2 items-center"
-                      onClick={async ()=> { await signIn("google")}}>
-                        <FaGoogle className=''/>
-                        <strong>Log in with google</strong></button>
-            </div>
+    return (
+      <>
+        <div className="bg-gray-300 w-screen h-screen flex items-center">
+          <div className="text-center w-full flex justify-center">
+            <button 
+                    className="bg-white text-primary shadow-md p-2 px-4 rounded-md flex gap-2 items-center"
+                    onClick={async ()=> { await signIn("google")}}>
+                      <FaGoogle className=''/>
+                      <strong>Log in with google</strong></button>
           </div>
-        </>
-      ) 
-    }
-    return loging();
+        </div>
+      </>
+    ) 
   };
 
   if(status === "loading"){
+    console
     return (
       <>
         <div className="bg-gray-300 w-screen h-screen flex items-center">
