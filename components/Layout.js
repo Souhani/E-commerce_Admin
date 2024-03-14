@@ -12,7 +12,7 @@ export default function Layout({ children }) {
   console.log(status)
   if(status === "unauthenticated"){
     const loging = async () => {
-      await signOut("google");
+      await signOut();
       return(
         <>
           <div className="bg-gray-300 w-screen h-screen flex items-center">
