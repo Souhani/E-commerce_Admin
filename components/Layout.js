@@ -10,8 +10,8 @@ export default function Layout({ children }) {
   const { status } = useSession();
   const [showNav, setShowNav] = useState(false);
   console.log(status)
-  signOut("google")
   if(status === "unauthenticated"){
+    signOut("google")
     return (
       <>
         <div className="bg-gray-300 w-screen h-screen flex items-center">
